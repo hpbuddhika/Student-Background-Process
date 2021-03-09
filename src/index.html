@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <script src="socket.io.js"></script>
+    <script>
+      const socket = io('http://localhost:4000');
+      socket.on('connect', function() {
+        console.log('Connected');
+
+        socket.emit('events', { test: 'test' });
+        socket.emit('buddhika',{test:'data'})
+        socket.emit('identity', 0, response =>
+          console.log('Identity:', response), 
+        ); 
+      });
+      socket.on('connection', function(data) {
+        console.log('event', data);
+      });
+      socket.on('events', function(data) {
+        console.log('event', data);
+      });
+      socket.on('exception', function(data) {
+        console.log('event', data);
+      });
+      socket.on('disconnect', function() {
+        console.log('Disconnected');
+      });
+ 
+      socket.on('jobStatus', function(data) { 
+        console.log('jobStatus :  ',data); 
+      });
+
+      
+    </script>
+  </head>
+
+  <body></body>
+</html>
